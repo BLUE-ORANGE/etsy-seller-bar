@@ -11,41 +11,56 @@ let app = express();
 let morgan = require('morgan');
 app.use(morgan('combined'));
 
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, '/../client/')));
 // app.use('/v1/product', route);
 
 app.get('/v1/products/:id', (req, res) => {
     var id = req.params.id;
     console.log(id);
-  db.getShopIdForProduct(id, (err, data) => {
-    console.log('err: ' + err);
-    console.log('data: ' + data);
-    if (err) {
-      console.log(`err retrieving images: ${err}`);
-      res.statusCode = 404;
-      res.send('Not found');
-    }  else {
-        console.log(data);
-        res.send(data);   
-    }
-  })
-})
 
-// app.get('/v1/products/:id', (req, res) => {
-//     var id = req.params.id;
-//     console.log(id);
-//   db.getShopIdForProduct(id)
-//       .then(data => {
-//       res.send(data);
-//   })
-//   .catch(err => {
-//     res.statusCode = 404
-//     res.send(err);
-//   })
-//   });
+  db.getShopIdForProduct(id)
+      .then((data) => {
+        const resp = {
+          results: [],
+        };
+        // console.log("data is: " + data);
+        resp.results = data;
+        res.send(resp);
+      })
+      .catch((err) => {
+        res.statusCode = 404;
+        res.send(err);
+      });
+});
 
+app.get('/v1/shops/:id', (req, res) => {
+    var id = req.params.id;
+    db.getShopInfo(id)
+        .then((data) => {
+            const resp = {
+                results: data
+            };
+            res.send(resp);
+        }).catch((err) => {
+            res.statusCode = 404;
+            res.send(err);
+        });
+});
 
-
+app.get('/v1/shops/:shopid/products', (req, res) => {
+    var id = req.params.shopid;
+    db.getOtherImagesSameShop(id)
+        .then((data) => {
+            let products = [];
+            data.forEach(ele => {
+                products.push(ele.dataValues);
+            });
+            res.send(products);
+        }).catch((err) => {
+            res.statusCode = 404;
+            res.send(err);
+        });
+});
 
 app.listen(PORT, () => {
   console.log(`listening on port: ${PORT}`);

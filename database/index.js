@@ -38,53 +38,65 @@ Product.belongsTo(Shop, {foreignKey: 'shopId'});
 //     console.log(shops)
 //   })
 
-let getShopIdForProduct = (id, cb) => {
-  Product.findAll({
-    // attributes: ['shopId'],
-    where: {
-      id: id
-    }
-  })
-  .then(shopId => {
-      cb(null, shopId[0].dataValues.shopId);
-  })
-  .catch((err) => {
-      console.log(err);
-    cb(err, null);
-   });
-}
+// let getShopIdForProduct = (id, cb) => {
+//   Product.findAll({
+//     // attributes: ['shopId'],
+//     where: {
+//       id: id
+//     }
+//   })
+//   .then(shopId => {
+//       cb(null, shopId[0].dataValues.shopId);
+//   })
+//   .catch((err) => {
+//       console.log(err);
+//     cb(err, null);
+//    });
+// }
 
-let getOtherImagesSameShop = (prod, shop, cb) => {
+let getShopIdForProduct = id => Product.findAll({
+      attributes: ['shopId'],
+      where: {
+        id: id
+      },
+    }).then(shopId => shopId[0].dataValues.shopId).catch(err => err);
+
+let getOtherImagesSameShop = (shop) => 
     Product.findAll({
+        attributes: ['imageUrl', 'id'],
         where: {
-            shopId: shop,
-            id: {
-                [Op.ne]: prod
-            }
+            shopId: shop
         }
-    })
-    .then(results => {
-        let output = [];
-        results.forEach((ele) => {
-            output.push(ele.dataValues.imageUrl)
-        })
-        console.log(output);
-    })
-}
+    }).then(results => results).catch(err => err);
+        
+    //     {
+    //     let output = [];
+    //     results.forEach((ele, index) => {
+    //         output.push(ele.dataValues.imageUrl)
+    //     })
+    //     console.log(output);
+    //     return output;
+    // })
 
-let getShopInfo = (id, cb) => {
-    Shop.findAll({
-        where: {
-            id: id
-        }
-    })
-    .then(shop => {
-        cb(null, [shop[0].dataValues.avatarurl, shop[0].dataValues.name]);
-    })
-    .catch((err) => {
-      cb(err, null);
-    });
-}
+let getShopInfo = id => Shop.findAll({
+    where: {
+        id: id
+    }
+}).then(shop => [shop[0].dataValues.avatarurl, shop[0].dataValues.name]).catch(err => err);
+
+// let getShopInfo = (id, cb) => {
+//     Shop.findAll({
+//         where: {
+//             id: id
+//         }
+//     })
+//     .then(shop => {
+//         cb(null, [shop[0].dataValues.avatarurl, shop[0].dataValues.name]);
+//     })
+//     .catch((err) => {
+//       cb(err, null);
+//     });
+// }
 
 // getShopIdForProduct(40, (err, data) => {getShopInfo(data, (err1, data1) => {
 //     console.log(data1[0] + ': URL');
@@ -94,13 +106,14 @@ let getShopInfo = (id, cb) => {
 // getOtherImagesSameShop(40, 13);
 
 
-getShopIdForProduct(40, (err, data) => {
-    if (err) {
-      console.log(`err retrieving images: ${err}`);
-    }  else {
-        console.log('blah' + data);  
-    }
-  })
+getShopIdForProduct(40)
+  .then(data => console.log(data))
+
+getShopInfo(13)
+  .then(data => console.log(data))
+
+getOtherImagesSameShop(40, 13)
+  .then(data => console.log(data))
 
 module.exports.getOtherImagesSameShop = getOtherImagesSameShop;
 module.exports.getShopInfo = getShopInfo;
