@@ -45,7 +45,7 @@ class App extends React.Component {
         if (data) {
           this.setState({
             sellerImage: data.results[0],
-            sellerName: data.results[1].slice(0,10)
+            sellerName: data.results[1]
           });
         }
       } 
@@ -90,32 +90,43 @@ class App extends React.Component {
   render(props) {
 
     return (
-      <div id="seller-wrapper">
-        <div id="seller-section">
-          <img id="seller-image" src={this.state.sellerImage} style={{'width':'75', 'height':'75'}}></img>
-          <div>
-          <div id="seller-name">{this.state.sellerName}</div>
-          <button><div id="fave"><span id="heart">♡ </span><span id="faves">Favorite shop</span></div></button>
+      <div id="seller-wrapper" class="content-wrap-inner-blank col12 ui-toolkit">
+        <div class="col-group col-flush">
+          <div class="col-md-5">
+            <div class="flag">
+              <div class="flag-img">
+                <img id="seller-image" src={this.state.sellerImage} style={{'width':'75', 'height':'75'}}></img>
+              </div>
+              <div class="flag-body">
+                <div itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="text-headline-smaller b mb-xs-1">
+                  <span itemprop="title">{this.state.sellerName}</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <ul class="thumbnail-links">
-          <li>
-              <div class="thumbnail-outer count-number">
-                <div class="thumbnail-inner">
-                <div class="moreitems"><div class="count-text">{this.state.images.length}</div>items</div>
-                </div></div>
-              </li>
+          <div id="shop-listings" class="col-md-7">
+            <ul class="thumbnail-links">
           {this.state.fourImages.map((image) => {
             return (
               <li>
                 <div class="thumbnail-outer">
-                <div class="thumbnail-inner">
-                <img src={image.imageUrl} style={{'width':'69', 'height':'69'}}></img>
-                </div></div>
+                  <div class="thumbnail-inner">
+                    <img src={image.imageUrl} style={{'width':'69', 'height':'69'}}></img>
+                  </div>
+                </div>
               </li>
             );
           })}
-        </ul>
+              <li>
+                <div class="thumbnail-outer count-box bg-white" style={{'padding': '3px'}}>
+                  <div class="thumbnail-inner">
+                    <span class="count-number">{this.state.images.length - this.state.fourImages.length}</span>items
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }

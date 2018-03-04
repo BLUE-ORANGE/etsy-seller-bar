@@ -1,0 +1,116 @@
+@font-face {
+    font-family: "GraphikWebfont";
+    src: url('/fonts/graphik-regular-webfont.eot');
+    src: url('/fonts/graphik-regular-webfont.eot') format('embedded-opentype'),
+         url('/fonts/graphik-regular-webfont.woff') format('woff'),
+         url('/fonts/graphik-regular-webfont.ttf')  format('truetype'),
+         url('/fonts/graphik-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+li {
+	display: inline-block;
+    float: right;
+    padding-left: 18px;
+}
+
+#seller-wrapper {
+    width: 980px;
+    height: 131px;
+    background: #f5f5f1;
+    display: block;
+    margin-top: 28px;
+    padding: 0 28px;
+    color: #222;
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-size: 14px;
+}
+
+#seller-section{
+    display: inline-block;
+    float: left;
+    width: 387px;
+    height: 75px;
+    margin-top: 28px;
+}
+
+#seller-image {
+    display: inline-block;
+    float: left;
+    padding-right: 12px;
+}
+
+#seller-name {
+    font-weight: 500;
+    font-size: 26px;
+}
+
+.thumbnail-links {
+    display: inline-block; 
+    border: none;
+    padding: 0;
+    float: right;
+    margin-top: 28px;
+}
+
+.thumbnail-outer {
+    border-radius: 3px;
+    border: 1px solid #ececec;
+    float: left;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1.4;
+    vertical-align: middle;
+}
+
+.thumbnail-inner {
+    border-radius: 3px;
+    border: 3px solid #fff;
+    background: #fff;
+    overflow: hidden;
+}
+
+.count-number {
+    display: table-cell;
+    vertical-align: middle;
+    height: 75px;
+    width: 75px;
+    background: #fff;
+    font-size: 14px;
+    padding-top: 0px;
+    color: #444;
+    text-align: center;
+}
+
+.count-text{
+    font-size: 20px;
+    color: #444;
+    text-align: center; 
+    padding-top: 10px;
+}
+
+.moreitems {
+    vertical-align: middle;
+    height: 69px;
+}
+
+button {
+    font-size: 12px;
+    font-weight: normal;
+    height: 28px;
+    padding: 4px 12px;
+    border-radius: 3px;
+    border: 1px solid #ececec;
+    color: #777;  
+    vertical-align: middle;      
+}
+
+#heart {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#faves {
+    
+}
