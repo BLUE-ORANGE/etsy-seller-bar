@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import styles from '../styles.css'
 
 class App extends React.Component {
   constructor(props) {
@@ -92,7 +93,7 @@ class App extends React.Component {
     return (
       <div id="seller-wrapper">
         <div id="seller-section">
-          <img id="seller-image" src={this.state.sellerImage} style={{'width':'75', 'height':'75'}}></img>
+          <img id="seller-image" src={this.state.sellerImage} style={{'width':'75px', 'height':'75px'}}></img>
           <div>
           <div id="seller-name">{this.state.sellerName}</div>
           <button><div id="fave"><span id="heart">♡ </span><span id="faves">Favorite shop</span></div></button>
@@ -110,7 +111,7 @@ class App extends React.Component {
               <li>
                 <div class="thumbnail-outer">
                 <div class="thumbnail-inner">
-                <img src={image.imageUrl} style={{'width':'69', 'height':'69'}}></img>
+                <img src={image.imageUrl} style={{'width':'69px', 'height':'69px'}}></img>
                 </div></div>
               </li>
             );
@@ -121,4 +122,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+export default ReactDOM.render(<App />, document.getElementById('app'));

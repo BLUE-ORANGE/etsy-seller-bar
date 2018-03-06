@@ -4,9 +4,11 @@ let bodyParser = require('body-parser');
 let jsonParser = bodyParser.json();
 let db = require('../database/index.js');
 let route = require('./router.js');
+const cors = require('cors');
 
 const PORT = 3001;
 let app = express();
+app.use(cors());
 
 let morgan = require('morgan');
 app.use(morgan('combined'));
