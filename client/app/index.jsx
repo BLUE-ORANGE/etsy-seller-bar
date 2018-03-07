@@ -22,7 +22,7 @@ class App extends React.Component {
   getShopId(id) {
     $.ajax({
       method: 'GET',
-      url: `http://127.0.0.1:3001/v1/products/${id}`,
+      url: `/v1/products/${id}`,
       // contentType: 'application/json',
       success: (data) => {
         if (data) {
@@ -40,7 +40,7 @@ class App extends React.Component {
   getSellerInfo(id) {
     $.ajax({
       method: 'GET',
-      url: `http://127.0.0.1:3001/v1/shops/${id}`,
+      url: `/v1/shops/${id}`,
       // contentType: 'application/json',
       success: (data) => {
         if (data) {
@@ -56,7 +56,7 @@ class App extends React.Component {
   getImages(id) {
     $.ajax({
       method: 'GET',
-      url: `http://127.0.0.1:3001/v1/shops/${id}/products`,
+      url: `/v1/shops/${id}/products`,
       // contentType: 'application/json',
       success: (data) => {
         let fourImages = [];
