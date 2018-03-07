@@ -22,7 +22,7 @@ class App extends React.Component {
   getShopId(id) {
     $.ajax({
       method: 'GET',
-      url: `http://localhost:3001/v1/products/${id}`,
+      url: `/v1/products/${id}`,
       // contentType: 'application/json',
       success: (data) => {
         if (data) {
@@ -40,7 +40,7 @@ class App extends React.Component {
   getSellerInfo(id) {
     $.ajax({
       method: 'GET',
-      url: `http://localhost:3001/v1/shops/${id}`,
+      url: `/v1/shops/${id}`,
       // contentType: 'application/json',
       success: (data) => {
         if (data) {
@@ -56,7 +56,7 @@ class App extends React.Component {
   getImages(id) {
     $.ajax({
       method: 'GET',
-      url: `http://localhost:3001/v1/shops/${id}/products`,
+      url: `/v1/shops/${id}/products`,
       // contentType: 'application/json',
       success: (data) => {
         let fourImages = [];
@@ -96,11 +96,11 @@ class App extends React.Component {
           <img id="seller-image" src={this.state.sellerImage} style={{'width':'75px', 'height':'75px'}}></img>
           <div>
           <div id="seller-name">{this.state.sellerName}</div>
-          <button><div id="fave"><span id="heart">♡ </span><span id="faves">Favorite shop</span></div></button>
+          <button className="btn"><div id="fave"><span id="heart">♡ </span><span id="faves">Favorite shop</span></div></button>
           </div>
         </div>
         <ul class="thumbnail-links">
-          <li>
+          <li class="li">
               <div class="thumbnail-outer count-number">
                 <div class="thumbnail-inner">
                 <div class="moreitems"><div class="count-text">{this.state.images.length}</div>items</div>
@@ -108,7 +108,7 @@ class App extends React.Component {
               </li>
           {this.state.fourImages.map((image) => {
             return (
-              <li>
+              <li class="li">
                 <div class="thumbnail-outer">
                 <div class="thumbnail-inner">
                 <img src={image.imageUrl} style={{'width':'69px', 'height':'69px'}}></img>

@@ -2,7 +2,7 @@
 
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-const sequelize = new Sequelize('etsy-scratch', 'student', 'student', {
+const sequelize = new Sequelize('etsy-gowri', 'student', 'student', {
   host: 'localhost',
   port: 5432,
   dialect: 'postgres'

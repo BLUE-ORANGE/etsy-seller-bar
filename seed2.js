@@ -1,5 +1,5 @@
 let Sequelize = require('sequelize');
-let sqlz = new Sequelize('etsy-scratch', 'student', 'student', {
+let sqlz = new Sequelize('etsy-gowri', 'student', 'student', {
   host: 'localhost',
   port: 5432,
   dialect: 'postgres'
