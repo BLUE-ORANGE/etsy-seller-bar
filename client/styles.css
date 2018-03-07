@@ -131,7 +131,7 @@
     src: url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/fonts/slick.eot?#iefix') format('embedded-opentype'), url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/fonts/slick.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/fonts/slick.ttf') format('truetype'), url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/fonts/slick.svg#slick') format('svg');
 }
 
-li {
+.list {
 	display: inline-block;
     float: right;
     padding-left: 18px;
@@ -217,7 +217,7 @@ li {
     height: 69px;
 }
 
-button {
+.button {
     font-size: 12px;
     font-weight: normal;
     height: 28px;

@@ -96,11 +96,11 @@ class App extends React.Component {
           <img id="seller-image" src={this.state.sellerImage} style={{'width':'75px', 'height':'75px'}}></img>
           <div>
           <div id="seller-name">{this.state.sellerName}</div>
-          <button><div id="fave"><span id="heart">♡ </span><span id="faves">Favorite shop</span></div></button>
+          <button class="button"><div id="fave"><span id="heart">♡ </span><span id="faves">Favorite shop</span></div></button>
           </div>
         </div>
         <ul class="thumbnail-links">
-          <li>
+          <li class="list">
               <div class="thumbnail-outer count-number">
                 <div class="thumbnail-inner">
                 <div class="moreitems"><div class="count-text">{this.state.images.length}</div>items</div>
@@ -108,7 +108,7 @@ class App extends React.Component {
               </li>
           {this.state.fourImages.map((image) => {
             return (
-              <li>
+              <li class="list">
                 <div class="thumbnail-outer">
                 <div class="thumbnail-inner">
                 <img src={image.imageUrl} style={{'width':'69px', 'height':'69px'}}></img>
